@@ -282,41 +282,57 @@ h1, h2, h3, h4, .btn, .nav-link, .badge-pill {
 }
 
 /* =========================================
-   3. NAVBAR
+   3. NAVBAR (REVISI FINAL)
    ========================================= */
 .navbar {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: var(--border-thick);
-  padding: 16px 0;
+  padding: 10px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: box-shadow 0.3s ease;
 }
 
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+ 
+  max-width: 1000px; 
+  margin: 0 auto;   
+  padding: 0 20px;
 }
 
+/* --- REVISI 1: LOGO NATURAL --- */
 .logo {
-  font-size: 1.8rem;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  color: var(--c-navy);
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  letter-spacing: -0.5px;
 }
 
-.logo .dot {
-  color: var(--c-maroon);
-  font-size: 2.5rem;
-  line-height: 0;
-  margin-left: 2px;
+.logo img {
+  height: auto;       
+  max-height: 100px;
+  width: auto;
+  
+  background: none;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  
+  margin-right: 0;
+  object-fit: contain;
+  transition: transform 0.2s;
 }
 
+.logo:hover img {
+  transform: rotate(-3deg) scale(1.05);
+  box-shadow: none;
+}
+
+/* --- MENU LINKS --- */
 .nav-menu {
   display: flex;
   list-style: none;
@@ -328,56 +344,70 @@ h1, h2, h3, h4, .btn, .nav-link, .badge-pill {
   text-decoration: none;
   color: var(--c-navy);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.1rem;
   position: relative;
-  transition: color 0.3s;
+  padding: 5px 0;
 }
 
 .nav-link::before {
   content: '';
   position: absolute;
-  width: 100%;
-  height: 0%;
+  width: 0%;
+  height: 3px; 
   bottom: 0;
   left: 0;
-  background-color: var(--c-blue);
-  opacity: 0.3;
-  transition: height 0.2s ease;
-  z-index: -1;
+  
+  background-color: var(--c-maroon); 
+  
+  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  border-radius: 2px;
 }
 
 .nav-link:hover::before {
-  height: 60%;
+  width: 100%;
 }
 
+.nav-link:hover {
+  color: var(--c-maroon);
+}
+
+/* --- TOMBOL DISKUSI (CTA) --- */
 .btn-nav {
-  padding: 8px 24px;
+  padding: 10px 28px;
   font-size: 1rem;
+  font-weight: 700;
   background: var(--c-blue);
+  border: 2px solid var(--c-navy);
   box-shadow: 4px 4px 0px var(--c-navy);
   color: var(--c-navy);
-  border-radius: 12px;
+  border-radius: 50px;
+  transition: all 0.2s;
+  cursor: pointer;
 }
 
 .btn-nav:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px var(--c-navy);
+  transform: translate(-2px, -3px);
+  box-shadow: 6px 7px 0px var(--c-navy);
+  background-color: #fff;
 }
 
-/* Hamburger */
-.hamburger {
-  display: none;
-  cursor: pointer;
-  z-index: 1001;
-}
-.hamburger span {
-  display: block;
-  width: 28px;
-  height: 3px;
-  margin: 6px;
-  background: var(--c-navy);
-  border-radius: 3px;
-  transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 20px;
+  }
+  
+  .logo img { 
+    max-height: 50px;
+  }
+  
+  .nav-menu {
+    display: none;
+  }
+  
+  .hamburger {
+    display: block;
+  }
 }
 
 /* =========================================
