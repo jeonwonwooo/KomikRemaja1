@@ -142,6 +142,146 @@ h1, h2, h3, h4, .btn, .nav-link, .badge-pill {
 }
 
 /* =========================================
+   STATISTIC SECTION (FIXED VARIABLES)
+   ========================================= */
+
+.statistic {
+  display: flex;
+  flex-direction: row; /* Kunci agar jejer ke samping */
+  justify-content: center;
+  align-items: stretch; /* Tinggi kartu sama */
+  gap: 40px; /* Jarak antar kartu */
+  margin-top: 50px;
+  margin-bottom: 50px;
+  flex-wrap: wrap; /* Aman untuk responsif */
+  padding: 20px;
+}
+
+.statistic-item {
+  position: relative;
+  background-color: var(--c-pure-white);
+  
+  /* Border Utama (Gelap) */
+  border: 3px solid var(--c-navy);
+  
+  /* Garis putus-putus KUNING di dalam */
+  outline: 3px dashed var(--c-yellow);
+  outline-offset: -12px; /* Menarik garis masuk ke dalam */
+  
+  border-radius: 24px;
+  
+  /* Shadow Hard ala Komik */
+  box-shadow: 8px 8px 0px var(--c-navy);
+  
+  padding: 40px 30px 30px 30px;
+  text-align: center;
+  min-width: 280px; /* Lebar minimal agar proporsional */
+  flex: 0 1 auto;
+  transition: transform 0.3s ease;
+  margin-top: 20px; /* Space untuk lingkaran yang menonjol keluar */
+}
+
+.statistic-item:hover {
+  transform: translateY(-5px);
+}
+
+/* --- LINGKARAN DEKORASI (::before) --- */
+.statistic-item::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -25px; /* Menonjol keluar atas */
+  left: -15px; /* Menonjol keluar kiri */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  
+  /* Gradien menggunakan variabel kamu */
+  background: linear-gradient(135deg, var(--c-yellow) 20%, var(--c-blue) 100%);
+  border: 3px solid var(--c-navy);
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+/* --- IKON FONTAWESOME (::after) --- */
+.statistic-item::after {
+  /* Setup FontAwesome */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  font-size: 1.8rem;
+  color: var(--c-navy);
+  z-index: 2; /* Di atas lingkaran */
+  
+  /* Posisi manual agar pas di tengah lingkaran */
+  top: -10px; 
+  left: 3px;
+  
+  width: 30px;
+  text-align: center;
+  transform: rotate(-10deg); /* Sedikit miring biar gaya komik */
+}
+
+/* Ikon Card 1: Astronot (\f4fb) */
+.statistic-item:nth-child(1)::after {
+  content: "\f4fb"; 
+}
+
+/* Ikon Card 2: Buku (\f518) */
+.statistic-item:nth-child(2)::after {
+  content: "\f518"; 
+  left: 4px; /* Sedikit geser untuk ikon buku */
+}
+
+/* --- ANGKA (COUNT) --- */
+.statistic-count {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--c-maroon);
+  
+  /* Text Shadow Kuning sesuai tema */
+  text-shadow: 3px 3px 0px var(--c-yellow);
+  
+  margin-bottom: 20px;
+  line-height: 1;
+  position: relative;
+  z-index: 5;
+}
+
+/* --- JUDUL/LABEL (TITLE) --- */
+.statistic-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--c-navy);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  /* Desain tombol pill */
+  display: inline-block;
+  background-color: var(--c-white); /* Background abu terang */
+  border: 2px solid var(--c-navy);
+  padding: 10px 24px;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.05);
+}
+
+/* --- RESPONSIVE (HP) --- */
+@media (max-width: 768px) {
+  .statistic {
+    flex-direction: column; /* HP jadi atas bawah */
+    gap: 50px;
+    align-items: center;
+  }
+  
+  .statistic-item {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+/* =========================================
    3. NAVBAR
    ========================================= */
 .navbar {
@@ -758,3 +898,4 @@ h1, h2, h3, h4, .btn, .nav-link, .badge-pill {
   .footer-content { flex-direction: column; gap: 30px; text-align: center; align-items: center; }
   .footer-links a { margin: 0 10px; display: inline-block; }
 }
+
